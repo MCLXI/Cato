@@ -35,8 +35,8 @@ unsigned int static DarkGravityWave(const CBlockIndex* pindexLast)
 
     if (pindexLast->nHeight > Params().LAST_POW_BLOCK()) {
         uint256 bnTargetLimit = (~uint256(0) >> 24);
-        int64_t nTargetSpacing = 2 * 45;
-        int64_t nTargetTimespan = 2 * 45;
+        int64_t nTargetSpacing = 1 * 60;
+        int64_t nTargetTimespan = 1* 60;
 
         int64_t nActualSpacing = 0;
         if (pindexLast->nHeight != 0)
@@ -110,7 +110,9 @@ unsigned int static DarkGravityWave(const CBlockIndex* pindexLast)
 	
 unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader* pblock)
 {
-	return DarkGravityWave(pindexLast);
+	//return DarkGravityWave(pindexLast);$
+        return Params().ProofOfWorkLimit().GetCompact();
+
 }
 
 bool CheckProofOfWork(uint256 hash, unsigned int nBits)

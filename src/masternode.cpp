@@ -213,10 +213,10 @@ void CMasternode::Check(bool forceCheck)
         CMutableTransaction tx = CMutableTransaction();
     CAmount collat_required;
     collat_required = 999.99 * COIN;
-    int active_nodes = mnodeman.CountEnabled();
-    if (active_nodes <= 30) {
+    int activenodes = tier;
+    if (active_nodes <= 1) {
 	collat_required = 999.99 * COIN;
-    } else if (active_nodes <= 60) {
+    } else if (active_nodes <= 2) {
 	collat_required = 1199.99 * COIN;
     } else if (active_nodes <= 90) {
 	collat_required = 1299.99 * COIN;
@@ -555,8 +555,8 @@ bool CMasternodeBroadcast::CheckAndUpdate(int& nDos)
     }
 
     if (Params().NetworkID() == CBaseChainParams::MAIN) {
-        if (addr.GetPort() != 33888) return false;
-    } else if (addr.GetPort() == 33888)
+        if (addr.GetPort() != 33998) return false;
+    } else if (addr.GetPort() == 33998)
         return false;
 
     //search existing Masternode list, this is where we update existing Masternodes with new mnb broadcasts
@@ -614,10 +614,10 @@ bool CMasternodeBroadcast::CheckInputsAndAdd(int& nDoS)
     //check outputs by MN enabled
     CAmount collat_required;
     collat_required = 999.99 * COIN;
-    int active_nodes = mnodeman.CountEnabled();
-    if (active_nodes <= 30) {
+    int active_nodes = tier;
+    if (active_nodes <= 1) {
 	collat_required = 999.99 * COIN;
-    } else if (active_nodes <= 60) {
+    } else if (active_nodes <= 2) {
 	collat_required = 1199.99 * COIN;
     } else if (active_nodes <= 90) {
 	collat_required = 1299.99 * COIN;

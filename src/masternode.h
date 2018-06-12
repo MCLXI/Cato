@@ -142,6 +142,7 @@ public:
     int nScanningErrorCount;
     int nLastScanningErrorBlockHeight;
     CMasternodePing lastPing;
+    int tier = 0;
 
     int64_t nLastDsee;  // temporary, do not save. Remove after migration to v12
     int64_t nLastDseep; // temporary, do not save. Remove after migration to v12
@@ -282,6 +283,9 @@ public:
 
     int64_t GetLastPaid();
     bool IsValidNetAddr();
+    void UpdateTier(int newTier) {
+	tier = newTier;
+	}
 };
 
 

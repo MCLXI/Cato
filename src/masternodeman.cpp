@@ -501,6 +501,14 @@ CMasternode* CMasternodeMan::GetNextMasternodeInQueueForPayment(int nBlockHeight
 
         //make sure it has as many confirmations as there are masternodes
         if (mn.GetMasternodeInputAge() < nMnCount) continue;
+	if (mn.tier == 0) { //houston, we have a problem
+	int current_highest_rank=0;
+	BOOST_FOREACH (CMasternode& mn, vMasternodes) {
+	if (mn.tier > current_highest_rank){
+	current_highest_rank = mn.tier;
+		}
+	}
+	mn.UpdateTier(current_highest_rank+1);
 
         vecMasternodeLastPaid.push_back(make_pair(mn.SecondsSincePayment(), mn.vin));
     }
@@ -925,8 +933,8 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
         }
 
         if (Params().NetworkID() == CBaseChainParams::MAIN) {
-            if (addr.GetPort() != 33888) return;
-        } else if (addr.GetPort() == 33888)
+            if (addr.GetPort() != 33998) return;
+        } else if (addr.GetPort() == 33998)
             return;
 
         //search existing Masternode list, this is where we update existing Masternodes with new dsee broadcasts
@@ -988,10 +996,10 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
         CMutableTransaction tx = CMutableTransaction();
     CAmount collat_required;
     collat_required = 999.99 * COIN;
-    int active_nodes = mnodeman.CountEnabled();
-    if (active_nodes <= 30) {
+    int active_nodes = tier;
+    if (active_nodes <= 1) {
 	collat_required = 999.99 * COIN;
-    } else if (active_nodes <= 60) {
+    } else if (active_nodes <= 2) {
 	collat_required = 1199.99 * COIN;
     } else if (active_nodes <= 90) {
 	collat_required = 1299.99 * COIN;

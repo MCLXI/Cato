@@ -2138,9 +2138,9 @@ int64_t GetBlockValue(int nHeight)
 		return .01 * COIN;
 	}
 	int enabled_nodes = mnodeman.CountEnabled();
-	if (enabled_nodes <= 30) {
+	if (enabled_nodes <= 1) {
 		nSubsidy =  9.2 * COIN;
-	} else if (enabled_nodes <= 60) {
+	} else if (enabled_nodes <= 2) {
 		nSubsidy = 12 * COIN;
 	} else if (enabled_nodes <= 90) {
 		nSubsidy = 12.65 * COIN;
