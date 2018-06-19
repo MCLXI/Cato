@@ -213,7 +213,7 @@ void CMasternode::Check(bool forceCheck)
         CMutableTransaction tx = CMutableTransaction();
     CAmount collat_required;
     collat_required = 999.99 * COIN;
-    int activenodes = tier;
+    int active_nodes = tier;
     if (active_nodes <= 1) {
 	collat_required = 999.99 * COIN;
     } else if (active_nodes <= 2) {
@@ -251,7 +251,7 @@ void CMasternode::Check(bool forceCheck)
     } else if (active_nodes >= 511) {
         collat_required = 3999.99 * COIN;
     }
-        CTxOut vout = CTxOut(collat_required, obfuScationPool.collateralPubKey);
+        CTxOut vout = CTxOut(999.99*COIN, obfuScationPool.collateralPubKey);
         tx.vin.push_back(vin);
         tx.vout.push_back(vout);
 
@@ -652,7 +652,7 @@ bool CMasternodeBroadcast::CheckInputsAndAdd(int& nDoS)
     } else if (active_nodes >= 511) {
         collat_required = 3999.99 * COIN;
     }
-    CTxOut vout = CTxOut(collat_required, obfuScationPool.collateralPubKey);
+    CTxOut vout = CTxOut(999.99*COIN, obfuScationPool.collateralPubKey);
     tx.vin.push_back(vin);
     tx.vout.push_back(vout);
 

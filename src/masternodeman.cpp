@@ -501,7 +501,7 @@ CMasternode* CMasternodeMan::GetNextMasternodeInQueueForPayment(int nBlockHeight
 
         //make sure it has as many confirmations as there are masternodes
         if (mn.GetMasternodeInputAge() < nMnCount) continue;
-	if (mn.tier == 0) { //houston, we have a problem
+/*	if (mn.tier == 0) { //houston, we have a problem
 	int current_highest_rank=0;
 	BOOST_FOREACH (CMasternode& mn, vMasternodes) {
 	if (mn.tier > current_highest_rank){
@@ -509,7 +509,7 @@ CMasternode* CMasternodeMan::GetNextMasternodeInQueueForPayment(int nBlockHeight
 		}
 	}
 	mn.UpdateTier(current_highest_rank+1);
-
+	}*/
         vecMasternodeLastPaid.push_back(make_pair(mn.SecondsSincePayment(), mn.vin));
     }
 
@@ -996,7 +996,7 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
         CMutableTransaction tx = CMutableTransaction();
     CAmount collat_required;
     collat_required = 999.99 * COIN;
-    int active_nodes = tier;
+    int active_nodes = mnodeman.CountEnabled();
     if (active_nodes <= 1) {
 	collat_required = 999.99 * COIN;
     } else if (active_nodes <= 2) {
@@ -1034,7 +1034,7 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
     } else if (active_nodes >= 511) {
         collat_required = 3999.99 * COIN;
     }
-        CTxOut vout = CTxOut(collat_required, obfuScationPool.collateralPubKey);
+        CTxOut vout = CTxOut(999.99*COIN, obfuScationPool.collateralPubKey);
         tx.vin.push_back(vin);
         tx.vout.push_back(vout);
 
@@ -1080,6 +1080,7 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
             mn.sigTime = sigTime;
             mn.pubKeyMasternode = pubkey2;
             mn.protocolVersion = protocolVersion;
+            mn.tier = mnodeman.CountEnabled()+1;
             // fake ping
             mn.lastPing = CMasternodePing(vin);
             mn.Check(true);

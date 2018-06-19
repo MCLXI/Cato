@@ -80,7 +80,7 @@ bool fVerifyingBlocks = false;
 unsigned int nCoinCacheSize = 5000;
 bool fAlerts = DEFAULT_ALERTS;
 
-unsigned int nStakeMinAge = 24 * 60 * 60; //24 hours
+unsigned int nStakeMinAge = 60; //24 hours
 int64_t nReserveBalance = 0;
 
 /** Fees smaller than this (in duffs) are considered zero fee (for relaying and mining)
@@ -2134,9 +2134,9 @@ int64_t GetBlockValue(int nHeight)
 	return  .01 * COIN;
 //switch POS
     } else if (nHeight > 100) {
-	if (nHeight < 20161) {
-		return .01 * COIN;
-	}
+	//if (nHeight < 20161) {
+	//	return .01 * COIN;
+	//}
 	int enabled_nodes = mnodeman.CountEnabled();
 	if (enabled_nodes <= 1) {
 		nSubsidy =  9.2 * COIN;
