@@ -199,7 +199,7 @@ Value masternode(const Array& params, bool fHelp)
         std::copy(params.begin() + 1, params.end(), newParams.begin());
         return masternodetiertwo(newParams, fHelp);
     }
-    if (strCommand == "tierthee") {
+    if (strCommand == "tierthree") {
         Array newParams(params.size() - 1);
         std::copy(params.begin() + 1, params.end(), newParams.begin());
         return masternodetierthree(newParams, fHelp);
@@ -472,6 +472,7 @@ Value masternodetiertwo (const Array& params, bool fHelp)
             "}\n"
             "\nExamples:\n" +
             HelpExampleCli("masternodecurrent", "") + HelpExampleRpc("masternodecurrent", ""));
+Array ret;
 Object obj;
 CTransaction wtx; 
 uint256 hashBlock;
@@ -489,6 +490,7 @@ if (wtx.vout[i].scriptPubKey.ToString()
 //obj.push_back(Pair("Found TIER ONE MN with collateral",wtx.vout[i].nValue/100000000));
 obj.push_back(Pair("Candidate",CBitcoinAddress(mn.pubKeyCollateralAddress.GetID()).ToString()));
 //obj.push_back(CBitcoinAddress(mn.pubKeyCollateralAddress.GetID()).ToString());
+ret.push_back(obj);
 
 //final_list.push_back(mn);
 }// inner if
@@ -496,10 +498,10 @@ obj.push_back(Pair("Candidate",CBitcoinAddress(mn.pubKeyCollateralAddress.GetID(
 }//gettransaction if
        // obj.push_back(Pair("Collat amnts", wtx2.ToString()));
 }//fboost_foreach
-if (obj.size() == 0) {
-obj.push_back(Pair("nil","nil"));
-}
-return obj;
+//if (obj.size() == 0) {
+//obj.push_back(Pair("nil","nil"));
+//}
+return ret;
 
 }
 Value masternodetierthree (const Array& params, bool fHelp)
@@ -519,6 +521,7 @@ Value masternodetierthree (const Array& params, bool fHelp)
             "}\n"
             "\nExamples:\n" +
             HelpExampleCli("masternodecurrent", "") + HelpExampleRpc("masternodecurrent", ""));
+Array ret;
 Object obj;
 CTransaction wtx; 
 uint256 hashBlock;
@@ -532,21 +535,21 @@ for (int i = 0; i< wtx.vout.size(); i++) {
 //obj.push_back(Pair("CScript Dest", wtx2.vout[i].scriptPubKey.ToString()));
 if (wtx.vout[i].scriptPubKey.ToString() 
 == GetScriptForDestination(mn.pubKeyCollateralAddress.GetID()).ToString() 
-&& wtx.vout[i].nValue/100000000 == 5052) {
+&& wtx.vout[i].nValue/100000000 == 5050) {
 //obj.push_back(Pair("Found TIER ONE MN with collateral",wtx.vout[i].nValue/100000000));
 obj.push_back(Pair("Candidate",CBitcoinAddress(mn.pubKeyCollateralAddress.GetID()).ToString()));
 //obj.push_back(CBitcoinAddress(mn.pubKeyCollateralAddress.GetID()).ToString());
-
+ret.push_back(obj);
 //final_list.push_back(mn);
 }// inner if
 }//for loop
 }//gettransaction if
        // obj.push_back(Pair("Collat amnts", wtx2.ToString()));
 }//fboost_foreach
-if (obj.size() == 0) {
-obj.push_back(Pair("nil","nil"));
-}
-return obj;
+//if (obj.size() == 0) {
+//obj.push_back(Pair("nil","nil"));
+//}
+return ret;
 
 }
 Value masternodecurrent (const Array& params, bool fHelp)

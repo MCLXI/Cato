@@ -195,8 +195,11 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     ui->labelzBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, zerocoinBalance, false, BitcoinUnits::separatorAlways));
     ui->labelUnconfirmed->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, unconfirmedBalance, false, BitcoinUnits::separatorAlways));
     ui->labelImmature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, immatureBalance, false, BitcoinUnits::separatorAlways));
-    ui->labelTotal->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, balance + unconfirmedBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelTotal1->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, balance + unconfirmedBalance, false, BitcoinUnits::separatorAlways));
     ui->labelTotal2->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, GetSporkValue(SPORK_17_CURRENT_MN_COLLATERAL) * 100000000, false, BitcoinUnits::separatorAlways));
+    ui->labelTotal3->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, GetSporkValue(SPORK_59_CURRENT_MN_COLLATERAL) * 100000000, false, BitcoinUnits::separatorAlways));
+    ui->labelTotal4->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, GetSporkValue(SPORK_60_CURRENT_MN_COLLATERAL) * 100000000, false, BitcoinUnits::separatorAlways));
+
     // Watchonly labels
     ui->labelWatchAvailable->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchOnlyBalance, false, BitcoinUnits::separatorAlways));
     ui->labelWatchPending->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchUnconfBalance, false, BitcoinUnits::separatorAlways));
@@ -274,7 +277,12 @@ void OverviewPage::updateWatchOnlyLabels(bool showWatchOnly)
         ui->labelBalance->setIndent(20);
         ui->labelUnconfirmed->setIndent(20);
         ui->labelImmature->setIndent(20);
-        ui->labelTotal->setIndent(20);
+        ui->labelTotal1->setIndent(20);
+        ui->labelTotal2->setIndent(20);
+        ui->labelTotal3->setIndent(20);
+
+        ui->labelTotal4->setIndent(20);
+
     }
 }
 
