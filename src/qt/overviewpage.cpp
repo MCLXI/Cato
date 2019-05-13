@@ -277,11 +277,11 @@ void OverviewPage::updateWatchOnlyLabels(bool showWatchOnly)
         ui->labelBalance->setIndent(20);
         ui->labelUnconfirmed->setIndent(20);
         ui->labelImmature->setIndent(20);
-        ui->labelTotal1->setIndent(20);
-        ui->labelTotal2->setIndent(20);
-        ui->labelTotal3->setIndent(20);
+//        ui->labelTotal1->setIndent(20);
+  //      ui->labelTotal2->setIndent(20);
+    //    ui->labelTotal3->setIndent(20);
 
-        ui->labelTotal4->setIndent(20);
+      //  ui->labelTotal4->setIndent(20);
 
     }
 }

@@ -140,7 +140,7 @@ Value getinfo(const Array& params, bool fHelp)
         obj.push_back(Pair("Tier 2 collateral", (int)GetSporkValue(SPORK_59_CURRENT_MN_COLLATERAL)));
         obj.push_back(Pair("Tier 3 collateral", (int)GetSporkValue(SPORK_60_CURRENT_MN_COLLATERAL)));
 
-if (chainActive.Height() >= 200000) {
+if (chainActive.Height() >= 500000) {
         obj.push_back(Pair("MN reward", GetBlockValue(chainActive.Height())));
         obj.push_back(Pair("Staking reward", GetBlockValue(chainActive.Height())));
 } else {
