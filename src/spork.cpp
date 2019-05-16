@@ -230,8 +230,8 @@ bool CSporkManager::CheckSignature(CSporkMessage& spork)
     //note: need to investigate why this is failing
     std::string strMessage = boost::lexical_cast<std::string>(spork.nSporkID) + boost::lexical_cast<std::string>(spork.nValue) + boost::lexical_cast<std::string>(spork.nTimeSigned);
 
-    string strSporkKey = "04D5B4C055667586CC8CEBFE6DAA0CEF55B50F1D27DD9F2018596EDD9F9C2B7301925BA63E7A29D8B34F8B2870C5364F2DEBABB85E15DABC06596B6EBF47665C68";
-
+//    string strSporkKey = "04D5B4C055667586CC8CEBFE6DAA0CEF55B50F1D27DD9F2018596EDD9F9C2B7301925BA63E7A29D8B34F8B2870C5364F2DEBABB85E15DABC06596B6EBF47665C68";
+string strSporkKey = "02d0373ad80b108f0697b961bbccf85a4ed55bdb6cba961cf90fcac264ea289e77";
     //CPubKey pubkeynew(ParseHex(Params().SporkKey()));
     CPubKey pubkeynew(ParseHex(strSporkKey));
     //cout << "CheckSignature: " << pubkeynew.GetHex() << "\n";
@@ -429,8 +429,8 @@ if (id == SPORK_38_LAST_26250_COLLAT_BLOCK) return "SPORK_38_LAST_26250_COLLAT_B
         if (id == SPORK_56_LAST_63175_COLLAT_BLOCK) return "SPORK_56_LAST_63175_COLLAT_BLOCK";
         if (id == SPORK_57_LAST_66325_COLLAT_BLOCK) return "SPORK_57_LAST_66325_COLLAT_BLOCK";
         if (id == SPORK_58_LAST_69650_COLLAT_BLOCK) return "SPORK_58_LAST_69650_COLLAT_BLOCK";
-        if (id == SPORK_59_CURRENT_MN_COLLATERAL) return "SPORK_58_CURRENT_MN_COLLATERAL";
-        if (id == SPORK_60_CURRENT_MN_COLLATERAL) return "SPORK_58_CURRENT_MN_COLLATERAL";
+        if (id == SPORK_59_CURRENT_MN_COLLATERAL) return "SPORK_59_CURRENT_MN_COLLATERAL";
+        if (id == SPORK_60_CURRENT_MN_COLLATERAL) return "SPORK_60_CURRENT_MN_COLLATERAL";
 
 
     return "Unknown";

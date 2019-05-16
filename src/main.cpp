@@ -2166,7 +2166,7 @@ if (!vMasternodez.empty()){
 */
 //    int64_t nSubsidy = 0;
 
-if (chainActive.Height() >= 500000) {
+if (chainActive.Height() >= 485313) {
 if (nHeight <= GetSporkValue(SPORK_37_LAST_25000_COLLAT_BLOCK)) {
 return 52 * COIN;
 }
@@ -2362,7 +2362,7 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCou
             return 0;
     }
 	
-if (chainActive.Height() >= 500000) {
+if (chainActive.Height() >= 485313) {
 
 return blockValue / 100 * 95; //95%
 }
