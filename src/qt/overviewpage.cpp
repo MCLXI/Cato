@@ -199,7 +199,51 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     ui->labelTotal2->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, GetSporkValue(SPORK_17_CURRENT_MN_COLLATERAL) * 100000000, false, BitcoinUnits::separatorAlways));
     ui->labelTotal3->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, GetSporkValue(SPORK_59_CURRENT_MN_COLLATERAL) * 100000000, false, BitcoinUnits::separatorAlways));
     ui->labelTotal4->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, GetSporkValue(SPORK_60_CURRENT_MN_COLLATERAL) * 100000000, false, BitcoinUnits::separatorAlways));
+unsigned int count_tier_1 = 0;
+unsigned int count_tier_2 = 0;
+unsigned int count_tier_3 = 0;
+//do calculation shit here
+CTransaction wtx; 
+uint256 hashBlock;
+    std::vector<CMasternode> vMasternodes = mnodeman.GetFullMasternodeVector();
+//std::vector<CMasternode> final_list;
+BOOST_FOREACH(CMasternode &mn, vMasternodes){ 
 
+if(GetTransaction(mn.vin.prevout.hash, wtx, hashBlock, true)) {
+for (int i = 0; i< wtx.vout.size(); i++) {
+//obj.push_back(Pair("Tx Outpoint", wtx2.vout[i].nValue));
+//obj.push_back(Pair("CScript Dest", wtx2.vout[i].scriptPubKey.ToString()));
+if (wtx.vout[i].scriptPubKey.ToString() 
+== GetScriptForDestination(mn.pubKeyCollateralAddress.GetID()).ToString() 
+&& wtx.vout[i].nValue/100000000 == GetSporkValue(SPORK_17_CURRENT_MN_COLLATERAL)) {
+count_tier_1 += 1;
+}// inner if
+
+if (wtx.vout[i].scriptPubKey.ToString() 
+== GetScriptForDestination(mn.pubKeyCollateralAddress.GetID()).ToString() 
+&& wtx.vout[i].nValue/100000000 == GetSporkValue(SPORK_59_CURRENT_MN_COLLATERAL)) {
+count_tier_2 += 1;
+}// inner if
+
+if (wtx.vout[i].scriptPubKey.ToString() 
+== GetScriptForDestination(mn.pubKeyCollateralAddress.GetID()).ToString() 
+&& wtx.vout[i].nValue/100000000 == GetSporkValue(SPORK_60_CURRENT_MN_COLLATERAL)) {
+count_tier_3 += 1;
+}// inner if
+
+}//for loop
+}//gettransaction if
+       // obj.push_back(Pair("Collat amnts", wtx2.ToString()));
+}//fboost_foreach
+
+
+
+
+
+
+    ui->labelTotal5->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, count_tier_1 * 100000000, false, BitcoinUnits::separatorAlways));
+    ui->labelTotal6->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, count_tier_2 * 100000000, false, BitcoinUnits::separatorAlways));
+    ui->labelTotal7->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, count_tier_3 * 100000000, false, BitcoinUnits::separatorAlways));
     // Watchonly labels
     ui->labelWatchAvailable->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchOnlyBalance, false, BitcoinUnits::separatorAlways));
     ui->labelWatchPending->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchUnconfBalance, false, BitcoinUnits::separatorAlways));
