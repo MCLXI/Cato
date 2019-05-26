@@ -238,12 +238,17 @@ count_tier_3 += 1;
 
 
 
+QString num5 = QString::number(count_tier_1) + " Nodes";
+QString num6 = QString::number(count_tier_2) + " Nodes";
+QString num7 = QString::number(count_tier_3) + " Nodes";
+    ui->labelTotal5->setText(num5);
+    ui->labelTotal6->setText(num6);
+    ui->labelTotal7->setText(num7);
 
 
-
-    ui->labelTotal5->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, count_tier_1 * 100000000, false, BitcoinUnits::separatorAlways));
-    ui->labelTotal6->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, count_tier_2 * 100000000, false, BitcoinUnits::separatorAlways));
-    ui->labelTotal7->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, count_tier_3 * 100000000, false, BitcoinUnits::separatorAlways));
+ //   ui->labelTotal5->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, count_tier_1 * 100000000, false, BitcoinUnits::separatorAlways));
+   // ui->labelTotal6->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, count_tier_2 * 100000000, false, BitcoinUnits::separatorAlways));
+    //ui->labelTotal7->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, count_tier_3 * 100000000, false, BitcoinUnits::separatorAlways));
     // Watchonly labels
     ui->labelWatchAvailable->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchOnlyBalance, false, BitcoinUnits::separatorAlways));
     ui->labelWatchPending->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, watchUnconfBalance, false, BitcoinUnits::separatorAlways));

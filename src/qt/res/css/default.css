@@ -1024,7 +1024,34 @@ font-weight:bold;
 font-size:14px;
 min-height:35px;
 }
-QWidget .QFrame#frame .QLabel#labelTotalText5 { /* Total Balance Label */
+/*
+QWidget .QFrame#frame .QLabel#labelTotalText5 { 
+qproperty-alignment: 'AlignVCenter | AlignRight';
+min-width:160px;
+background-color:#26ade3;
+color:#fff;
+margin-right:5px;
+padding-right:5px;
+font-weight:bold;
+font-size:14px;
+min-height:35px;
+}
+*/
+/*
+QWidget .QFrame#frame .QLabel#labelTotalText6 { 
+qproperty-alignment: 'AlignVCenter | AlignRight';
+min-width:160px;
+background-color:#26ade3;
+color:#fff;
+margin-right:5px;
+padding-right:5px;
+font-weight:bold;
+font-size:14px;
+min-height:35px;
+}
+*/
+/*
+QWidget .QFrame#frame .QLabel#labelTotalText7 {
 qproperty-alignment: 'AlignVCenter | AlignRight';
 min-width:160px;
 background-color:#26ade3;
@@ -1036,31 +1063,7 @@ font-size:14px;
 min-height:35px;
 }
 
-QWidget .QFrame#frame .QLabel#labelTotalText6 { /* Total Balance Label */
-qproperty-alignment: 'AlignVCenter | AlignRight';
-min-width:160px;
-background-color:#26ade3;
-color:#fff;
-margin-right:5px;
-padding-right:5px;
-font-weight:bold;
-font-size:14px;
-min-height:35px;
-}
-
-QWidget .QFrame#frame .QLabel#labelTotalText7 { /* Total Balance Label */
-qproperty-alignment: 'AlignVCenter | AlignRight';
-min-width:160px;
-background-color:#26ade3;
-color:#fff;
-margin-right:5px;
-padding-right:5px;
-font-weight:bold;
-font-size:14px;
-min-height:35px;
-}
-
-
+*/
 
 QWidget .QFrame#frame .QLabel#labelTotal1 { /* Total Balance */
 qproperty-alignment: 'AlignVCenter | AlignLeft';
