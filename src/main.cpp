@@ -2167,6 +2167,9 @@ if (!vMasternodez.empty()){
 //    int64_t nSubsidy = 0;
 
 if (chainActive.Height() >= 485313) {
+if(nHeight <= GetSporkValue(SPORK_58_LAST_69650_COLLAT_BLOCK)) {
+return 10 * COIN;
+}
 if (nHeight <= GetSporkValue(SPORK_37_LAST_25000_COLLAT_BLOCK)) {
 return 52 * COIN;
 }
