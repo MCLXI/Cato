@@ -140,9 +140,9 @@ Value getinfo(const Array& params, bool fHelp)
         obj.push_back(Pair("Tier 2 collateral", (int)GetSporkValue(SPORK_59_CURRENT_MN_COLLATERAL)));
         obj.push_back(Pair("Tier 3 collateral", (int)GetSporkValue(SPORK_60_CURRENT_MN_COLLATERAL)));
 
-if (chainActive.Height() >= 485313) {
-        obj.push_back(Pair("MN reward", GetBlockValue(chainActive.Height())));
-        obj.push_back(Pair("Staking reward", GetBlockValue(chainActive.Height())));
+if (chainActive.Height() >= 495217) {
+        obj.push_back(Pair("MN reward", GetMasternodePayment(chainActive.Height(), GetBlockValue(chainActive.Height()), 333)));
+        obj.push_back(Pair("Staking reward", GetBlockValue(chainActive.Height()) - GetMasternodePayment(chainActive.Height(), GetBlockValue(chainActive.Height()), 333)));
 } else {
 	double blk_reward = 0;
 	int collat = GetSporkValue(SPORK_17_CURRENT_MN_COLLATERAL);

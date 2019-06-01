@@ -522,7 +522,7 @@ CMasternode* CMasternodeMan::GetNextMasternodeInQueueForPayment(int nBlockHeight
 
     int nMnCount = CountEnabled();
 
-if(chainActive.Height() >= 485313){
+if(chainActive.Height() >= 495217){
 
     BOOST_FOREACH(CMasternode &mn, vMasternodes){
             CBitcoinAddress address(mn.pubKeyCollateralAddress.GetID());
@@ -654,7 +654,7 @@ int CMasternodeMan::GetMasternodeRank(const CTxIn& vin, int64_t nBlockHeight, in
     if (!GetBlockHash(hash, nBlockHeight)) return -1;
 
 
-if(chainActive.Height() >= 485313){
+if(chainActive.Height() >= 495217){
    BOOST_FOREACH(CMasternode &mn, vMasternodes)
    {
         CBitcoinAddress address(mn.pubKeyCollateralAddress.GetID());
