@@ -88,6 +88,9 @@ Value getinfo(const Array& params, bool fHelp)
             "  \"MN collateral\": xxxx,      (numeric) current required collateral to start a new masternode\n"
             "  \"MN reward\": xxxx,          (numeric) current Masternode reward\n"
             "  \"Staking reward\": xxxx,       (numeric) current Proof of Stake reward\n"
+            "  \"T1 Count\": xxxx,          (numeric) current # of tier 1 masternodes\n"
+            "  \"T2 Count\": xxxx,          (numeric) current # of tier 2 masternodes\n"
+            "  \"T3 Count\": xxxx,          (numeric) current # of tier 3 masternodes\n"
             "}\n"
             "\nExamples:\n" +
             HelpExampleCli("getinfo", "") + HelpExampleRpc("getinfo", ""));
