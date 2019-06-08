@@ -647,7 +647,9 @@ count_tier_3 += 1;
 }//gettransaction if
        // obj.push_back(Pair("Collat amnts", wtx3.ToString()));
 }//fboost_foreach
-int rez = count_tier_1 + count_tier_2 + count_tier_3;
+int real_tier_2 = count_tier_2-count_tier_3;
+int real_tier_1 = count_tier_1 - real_tier_2 - count_tier_3;
+int rez = real_tier_1 + real_tier_2 + count_tier_3;
     obj.push_back(Pair("total", rez));
     obj.push_back(Pair("stable", mnodeman.stable_size()));
     obj.push_back(Pair("obfcompat", mnodeman.CountEnabled(ActiveProtocol())));

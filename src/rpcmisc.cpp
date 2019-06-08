@@ -404,9 +404,12 @@ count_tier_3 += 1;
 }//fboost_foreach
 
 //int rez = count_tier_1+count_tier_2+count_tier_3;
-        obj.push_back(Pair("T1 Nodes", count_tier_1));
-        obj.push_back(Pair("T1 Nodes", count_tier_2));
-        obj.push_back(Pair("T1 Nodes", count_tier_3));
+int real_tier_2 = count_tier_2-count_tier_3;
+int real_tier_1 = count_tier_1 - real_tier_2 - count_tier_3;
+int rez = real_tier_1 + real_tier_2 + count_tier_3;
+        obj.push_back(Pair("T1 Count", real_tier_1));
+        obj.push_back(Pair("T2 Count", real_tier_2));
+        obj.push_back(Pair("T3 Count", count_tier_3));
 
 
 } else {
