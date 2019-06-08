@@ -144,8 +144,8 @@ Value getinfo(const Array& params, bool fHelp)
         obj.push_back(Pair("Tier 3 collateral", (int)GetSporkValue(SPORK_60_CURRENT_MN_COLLATERAL)));
 
 if (chainActive.Height() >= 495217) {
-        obj.push_back(Pair("MN reward", GetMasternodePayment(chainActive.Height(), GetBlockValue(chainActive.Height()), 333)));
-        obj.push_back(Pair("Staking reward", GetBlockValue(chainActive.Height()) - GetMasternodePayment(chainActive.Height(), GetBlockValue(chainActive.Height()), 333)));
+        obj.push_back(Pair("MN reward", GetMasternodePayment(chainActive.Height(), GetBlockValue(chainActive.Height()), 333) * 0.00000001));
+        obj.push_back(Pair("Staking reward", (0.00000001*GetBlockValue(chainActive.Height())) - (0.00000001 *GetMasternodePayment(chainActive.Height(), GetBlockValue(chainActive.Height()), 333))));
 int count_tier_1 = 0;
 int count_tier_2 = 0;
 int count_tier_3 = 0;
@@ -240,7 +240,7 @@ count_tier_1 += 1;
 
 if (wtx.vout[i].scriptPubKey.ToString() 
 == GetScriptForDestination(mn.pubKeyCollateralAddress.GetID()).ToString() 
-&& wtx.vout[i].nValue/100000000 >= 50000) {
+&& wtx.vout[i].nValue/100000000 >= 60000) {
 unsigned int collat_required2;
 
 CTransaction wtx3;
@@ -252,11 +252,11 @@ if (iter != mapBlockIndex.end()) {
 unsigned int txnheight2 = iter->second->nHeight;
 //block height of txn
 if (txnheight2 <= GetSporkValue(SPORK_37_LAST_25000_COLLAT_BLOCK)){
-collat_required2 = 50000;
+collat_required2 = 60000;
 } else if (txnheight2 <= GetSporkValue(SPORK_38_LAST_26250_COLLAT_BLOCK)) {
-collat_required2 = 52500;
+collat_required2 = 63000;
 } else if (txnheight2 <= GetSporkValue(SPORK_39_LAST_27575_COLLAT_BLOCK)){
-collat_required2 = 55125;
+collat_required2 = 66150;
 } else if (txnheight2 <= GetSporkValue(SPORK_40_LAST_28950_COLLAT_BLOCK)){
 collat_required2 = 69450;
 } else if (txnheight2 <= GetSporkValue(SPORK_41_LAST_30400_COLLAT_BLOCK)){
@@ -270,11 +270,11 @@ collat_required2 = 84425;
 } else if (txnheight2 <= GetSporkValue(SPORK_45_LAST_36925_COLLAT_BLOCK)){
 collat_required2 = 88650;
 } else if (txnheight2 <= GetSporkValue(SPORK_46_LAST_38775_COLLAT_BLOCK)){
-collat_required2 = 93100;
+collat_required2 = 93083;
 } else if (txnheight2 <= GetSporkValue(SPORK_47_LAST_40725_COLLAT_BLOCK)){
 collat_required2 = 97725;
 } else if (txnheight2 <= GetSporkValue(SPORK_48_LAST_42750_COLLAT_BLOCK)){
-collat_required2 = 102600;
+collat_required2 = 102611;
 } else if (txnheight2 <= GetSporkValue(SPORK_49_LAST_44900_COLLAT_BLOCK)){
 collat_required2 = 107750;
 } else if (txnheight2 <= GetSporkValue(SPORK_50_LAST_47150_COLLAT_BLOCK)){

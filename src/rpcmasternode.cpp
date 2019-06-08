@@ -485,7 +485,7 @@ count_tier_1 += 1;
 
 if (wtx.vout[i].scriptPubKey.ToString() 
 == GetScriptForDestination(mn.pubKeyCollateralAddress.GetID()).ToString() 
-&& wtx.vout[i].nValue/100000000 >= 50000) {
+&& wtx.vout[i].nValue/100000000 >= 60000) {
 unsigned int collat_required2;
 
 CTransaction wtx3;
@@ -497,11 +497,11 @@ if (iter != mapBlockIndex.end()) {
 unsigned int txnheight2 = iter->second->nHeight;
 //block height of txn
 if (txnheight2 <= GetSporkValue(SPORK_37_LAST_25000_COLLAT_BLOCK)){
-collat_required2 = 50000;
+collat_required2 = 60000;
 } else if (txnheight2 <= GetSporkValue(SPORK_38_LAST_26250_COLLAT_BLOCK)) {
-collat_required2 = 52500;
+collat_required2 = 63000;
 } else if (txnheight2 <= GetSporkValue(SPORK_39_LAST_27575_COLLAT_BLOCK)){
-collat_required2 = 55125;
+collat_required2 = 66150;
 } else if (txnheight2 <= GetSporkValue(SPORK_40_LAST_28950_COLLAT_BLOCK)){
 collat_required2 = 69450;
 } else if (txnheight2 <= GetSporkValue(SPORK_41_LAST_30400_COLLAT_BLOCK)){
@@ -515,11 +515,11 @@ collat_required2 = 84425;
 } else if (txnheight2 <= GetSporkValue(SPORK_45_LAST_36925_COLLAT_BLOCK)){
 collat_required2 = 88650;
 } else if (txnheight2 <= GetSporkValue(SPORK_46_LAST_38775_COLLAT_BLOCK)){
-collat_required2 = 93100;
+collat_required2 = 93083;
 } else if (txnheight2 <= GetSporkValue(SPORK_47_LAST_40725_COLLAT_BLOCK)){
 collat_required2 = 97725;
 } else if (txnheight2 <= GetSporkValue(SPORK_48_LAST_42750_COLLAT_BLOCK)){
-collat_required2 = 102600;
+collat_required2 = 102611;
 } else if (txnheight2 <= GetSporkValue(SPORK_49_LAST_44900_COLLAT_BLOCK)){
 collat_required2 = 107750;
 } else if (txnheight2 <= GetSporkValue(SPORK_50_LAST_47150_COLLAT_BLOCK)){
@@ -835,7 +835,7 @@ for (int i = 0; i< wtx.vout.size(); i++) {
 //obj.push_back(Pair("CScript Dest", wtx2.vout[i].scriptPubKey.ToString()));
 if (wtx.vout[i].scriptPubKey.ToString() 
 == GetScriptForDestination(mn.pubKeyCollateralAddress.GetID()).ToString() 
-&& wtx.vout[i].nValue/100000000 >= 50000) {
+&& wtx.vout[i].nValue/100000000 >= 60000) {
 //obj.push_back(Pair("Found TIER ONE MN with collateral",wtx.vout[i].nValue/100000000));
 
 unsigned int collat_required;
@@ -849,11 +849,11 @@ if (iter != mapBlockIndex.end()) {
 unsigned int txnheight = iter->second->nHeight;
 //block height of txn
 if (txnheight <= GetSporkValue(SPORK_37_LAST_25000_COLLAT_BLOCK)){
-collat_required = 50000;
+collat_required = 60000;
 } else if (txnheight <= GetSporkValue(SPORK_38_LAST_26250_COLLAT_BLOCK)) {
-collat_required = 52500;
+collat_required = 63000;
 } else if (txnheight <= GetSporkValue(SPORK_39_LAST_27575_COLLAT_BLOCK)){
-collat_required = 55125;
+collat_required = 66150;
 } else if (txnheight <= GetSporkValue(SPORK_40_LAST_28950_COLLAT_BLOCK)){
 collat_required = 69450;
 } else if (txnheight <= GetSporkValue(SPORK_41_LAST_30400_COLLAT_BLOCK)){
@@ -867,11 +867,11 @@ collat_required = 84425;
 } else if (txnheight <= GetSporkValue(SPORK_45_LAST_36925_COLLAT_BLOCK)){
 collat_required = 88650;
 } else if (txnheight <= GetSporkValue(SPORK_46_LAST_38775_COLLAT_BLOCK)){
-collat_required = 93100;
+collat_required = 93083;
 } else if (txnheight <= GetSporkValue(SPORK_47_LAST_40725_COLLAT_BLOCK)){
 collat_required = 97725;
 } else if (txnheight <= GetSporkValue(SPORK_48_LAST_42750_COLLAT_BLOCK)){
-collat_required = 102600;
+collat_required = 102611;
 } else if (txnheight <= GetSporkValue(SPORK_49_LAST_44900_COLLAT_BLOCK)){
 collat_required = 107750;
 } else if (txnheight <= GetSporkValue(SPORK_50_LAST_47150_COLLAT_BLOCK)){
